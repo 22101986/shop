@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+{% if items | length > 0 %}
+
+        <h1 class="font text-center m-2 p-2">Votre Panier</h1>
+
+    <div class="container bg bg-dark"> 
+        <table class="table">
+            <thead>
+                <tr class="text-light">
+                    <th>Nom</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr class="text-light">
+                        <td>{{ item.cart.name }}</td>
+                        <td>{{ item.cart.price }} €</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.cart.price * item.quantity }} €</td>
+                        <td>
+                            <a href="{{ path('remove_cart', {'id': item.cart.id}) }}" class="btn btn-danger btn-sm">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAABaElEQVRYhe2VvU7DMBSFPxiKxE6JWCuhPgMMUFGJF6jEK1SCBwB2KDwEcx8CCfEjJhYGpIadwMzPAAMNg09ESJ0mdivUIZ9k2fU98T21rxOoqKiYMW6BWO0N2P9vAzcpAzEwBBo52l0gSP0ONDc1+jLRtcT2FBsocaBxrNhU6GrBviWWTjjIjAOL/lDxMxcDTT30AsxZ4nXggd/jCoGVnLUupNlxMQAQ6cGmJbacMfCYY2AR+AS+gSVXA3l14HIE24rd2RLMFxi4Ur+Rme9gdiUEWmqh5joZbVv9eUEuK+PqoOw1vNcaLR8DML4Oiqhj3iUfwIJNUHQEANfqNz0MtDE7dwl8+RrIq4MybKn3Ov+EBmYbY882BFYnMQDmo/TqkfwdOJg0eUINOAWeMYXZ05yrxpsTRv/hsYfGm+Q6rgHrGkcemj+UuQVZ0i+keAKNMz1Gt/fIQ+NNTQki4EkL24qwSFNRMVv8ABZHkMQcSMSgAAAAAElFTkSuQmCC">
+                            </a>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr class="text-light">
+                    <td colspan="3"></td>
+                    <td>Total : {{ total }} €</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="d-flex justify-content-center m-2" >
+        <a href="{{ path('app_stripe')}}" class="btn btn-outline-success">Valider le panier</a>
+    </div>
+        
+{% else %}
+    <div class="d-flex justify-content-center bg bg-dark">
+        <h1 class=" text-center text-light font w-50">Panier vide</h1>
+    </div>
+    <div style="height:5000px;"></div>
+{% endif %}
+
+
+
+{% endblock %}

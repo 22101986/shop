@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+
+{% block body %}
+<div class="order d-flex justify-content-center">
+{% for product in products %}
+
+
+
+      
+{% if app.user %}
+        
+
+      <div class="card m-2 order" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{product.getName()}}</h5>
+        <img src="/shop/src/uploads/{{product.getPicture()}}" class="card-img-top" style="height:300px;" alt="...">
+        <p>{{product.getLildescription()}}</p>
+        <p>{{product.getDescription()}}</p>
+        
+        <p>{{product.getPrice()}}€</p>
+        <a href="{{ path('edit', {'id': product.getId()})}}" class="btn btn-warning m-2">Modifier</a></br>
+
+        <a href="{{ path('delete', {'id': product.getId()})}}" class="btn btn-danger m-2">Supprimer</a>
+
+      </div>
+    </div>
+
+      {% else %}
+
+    <div class="card m-2 order" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{product.getName()}}</h5>
+        <img src="/shop/src/uploads/{{product.getPicture()}}" class="card-img-top" style="height:300px;" alt="...">
+        <p>{{product.getDescription()}}</p>
+        <p>{{product.getPrice()}}€</p>
+        <a href="{{ path('app_cart', {'id' : product.getId()} )}}" class="btn btn-dark m-2">Ajouter au panier</a>
+
+      </div>
+    </div>
+
+    {% endif %}
+{% endfor %}
+</div>
+
+{% endblock %}
+

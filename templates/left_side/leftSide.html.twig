@@ -1,0 +1,97 @@
+<style>
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: #999999;
+}
+
+a:visited {
+  color: #999999;
+}
+
+a:focus {
+  border-bottom: 1px solid;
+  background: #000000;
+}
+
+a:hover {
+  border-bottom: 1px solid;
+  background: black;
+}
+
+a:active {
+  background: #000000;
+  color: #000000;
+}
+</style>
+
+
+<aside class="m-2 col-12 col-md-4 col-lg-3 col-xl-2 blog-sidebar">
+  <div class="row m-2 bg bg-muted">
+    <div class="col-12">
+      <div class="card mb-2">
+        </a>
+      </div>
+    </div>
+    <div class="col-12" style="width: 100%; height: 100%">
+      <div class="card mb-2" style="width: 100%; height: 100%;">
+        <div
+          style="background-color: #000000; color: white; text-transform: uppercase; font-size: 12px; font-weight: bold; padding: 3px 0 0 10px;">
+         <h4 class="text-center"> Catégories </h4>
+        </div>
+                <div class="card-body m-5 w-75">
+                    <h5>  
+                      <a href="{{path('app_action')}}"> 
+                        Action
+                      </a>
+                    </h5>
+                    <h5>  
+                      <a href="{{path('app_comedy')}}"> 
+                      Comédies
+                      </a>
+                    </h5>
+                    <h5>  
+                      <a  href="{{path('app_fantastique')}}"> 
+                        Fantastique
+                      </a>
+                    </h5>
+                    <h5>  
+                      <a  href="{{path('app_drame')}}"> 
+                        Drame
+                      </a>
+                    </h5>
+                    <h5>  
+                      <a  href="{{path('app_animation')}}"> 
+                        Animation
+                      </a>
+                    </h5>
+                    <h5>  
+                      <a  href="{{path('app_humour')}}"> 
+                        Humour
+                      </a>
+                    </h5>
+
+                    {% if app.user %}
+
+                    <a class='btn btn-outline-dark'  href="{{path('add')}}">Ajouter article</a>
+
+                    {% endif %}
+                    
+
+                </div>
+
+                <div class="card m-5" style="height: 100%;">
+                    <img class="img-fluid" src="{{ asset('assets/img/dvdexample.jpg') }}" />
+                </div>
+
+
+                
+
+            
+         
+</aside>
+

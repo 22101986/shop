@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+
+
+<div class="d-flex justify-content-center sizing">
+    
+
+
+         {{ render(controller('App\\Controller\\LeftSideController::leftSide')) }}
+
+         {{ render(controller('App\\Controller\\ShopController::index')) }}
+
+</div>
+
+
+{% endblock %}

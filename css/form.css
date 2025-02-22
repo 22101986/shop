@@ -1,0 +1,32 @@
+.font {
+    font-family: 'Fuzzy Bubbles', cursive;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+}
+
+a:link {
+    color: #999999;
+}
+
+a:visited {
+    color: #999999;
+}
+
+a:focus {
+    border-bottom: 1px solid;
+    background: #000000;
+}
+
+a:hover {
+    border-bottom: 1px solid;
+    background: black;
+}
+
+a:active {
+    background: #000000;
+    color: #000000;
+}

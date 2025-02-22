@@ -1,0 +1,178 @@
+{% block title %}{% endblock %}
+
+ 
+
+
+
+{% block body %}
+
+<style>
+.carrousel {
+  width:1350px;
+  height:675px;
+}
+{# #contner {
+  width:1000px;
+  height:500px;
+}
+.photo{
+  width:1000px;
+  height:500px;
+  margin: 0;
+  display: inline-block;
+  background-size: cover;
+} #}
+
+
+</style>
+
+{# <script>
+  document.body.onload=function(){
+    nbr=2;
+    p=0;
+    container = document.getElementById("contner");
+    container.style.width = (800*nbr)+"px";
+    for(i=1; i<= nbr; i++) {
+      div = document.createElement("div");
+      div.className = "photo";
+      div.style.backgroundImage = "url('img"+i+".jpg')";
+      container.appendChild(div);
+    }
+  }
+
+</script> #}
+
+
+<div class="d-flex flex-wrap justify-content-center">
+{% if app.user %}
+
+
+{% else %}
+<div id="carouselExampleControls" class="carousel slide mb-3 " data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block carrousel  w-100" style="border: solid 4px #FFF;" src="{{ asset('assets/img/img2.jpg') }}" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block carrousel w-100" style="border: solid 4px #FFF;" src="{{ asset('assets/img/cons.jpg') }}" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block carrousel w-100" style="border: solid 4px #FFF;" src="{{ asset('assets/img/vaianapct.jpg') }}" alt="Third slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block carrousel w-100" style="border: solid 4px #FFF;" src="{{ asset('assets/img/avangerspct.jpg') }}" alt="Fourth slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block carrousel w-100" style="border: solid 4px #FFF;" src="{{ asset('assets/img/rambopct.jpg') }}" alt="Fivth slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block carrousel w-100" style="border: solid 4px #FFF;" src="{{ asset('assets/img/batmanpct.png') }}" alt="sixth slide">
+    </div>
+  </div>
+  
+</div>
+{% endif %}
+
+
+
+
+{% for product in products %}
+
+  {% set n = product.name %}
+
+  {% set p = product.price %}
+
+  {% set pr = product.price %}
+
+  {% set i = product.id %}
+
+  {% set d = product.description %}
+
+
+  {% set ld = product.getLildescription() %}
+
+    <div class="modal fade" id="exampleModalLong" >
+      <div class="modal-dialog" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Résumé</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="order d-flex justify-content-center">
+              <div class="card m-2 order" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title font">{{product.getName()}}</h5>
+                  <img src="/shop/src/uploads/{{product.getPicture()}}" class="card-img-top" style="height:300px;" alt="...">
+                  <p>{{product.getDescription()}}</p>
+                  <p>{{product.getPrice()}}€</p>
+                  <a href="{{ path('app_cart', {'id' : product.getId()} )}}" class="btn btn-dark m-2">Ajouter au panier</a>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+
+
+    <div class="card m-2 order" style="width: 18rem;">
+      <div class="card-body">
+        
+      {% if app.user %}
+        <h5 class="card-title font">{{n}}</h5>
+
+        <img src="/shop/src/uploads/{{product.getPicture()}}" class="card-img-top" style="height:300px;" alt="...">
+        <div class='container'>  
+        <p><b>{{ld}}</b></p>
+        <p>{{d}}</p>
+        <p><b>Prix :</b></p>
+        <p>{{p}} €</p>
+
+      </div>
+      
+        <a href="{{ path('edit', {'id': product.getId()})}}" class="btn btn-warning m-2">Modifier</a></br>
+        <a href="{{ path('delete', {'id': product.getId()})}}" class="btn btn-danger m-2">Supprimer</a>
+      
+
+      {% else %}
+        <h5 class="card-title font">{{n}}</h5>
+
+        <img src="/shop/src/uploads/{{product.getPicture()}}" class="card-img-top" style="height:300px;" alt="...">
+        <div class='container'>  
+        <p>{{ld}}</p>
+
+      
+      </div>
+        <button type="button" class="btn btn-outline-secondary m-2" data-toggle="modal" data-target="#exampleModalLong">Plus de détails</button>
+        <p class=m-2>{{pr}} €</p>
+        <a href="{{ path('app_cart', {'id' : product.getId()} )}}" class="btn btn-dark m-2">Ajouter au panier</a>
+
+      {% endif %}
+
+    </div>
+</div>
+
+{% endfor %}
+
+{% for product in products %}
+
+
+
+{% endfor %}
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}
