@@ -26,46 +26,16 @@
 - Symfony CLI
 - MySQL database
 
-### Steps
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/22101986/shop.git
-   cd shop
-   ```
 
-2. Install dependencies:
-   ```bash
-   composer install
-   ```
-
-3. Set up environment variables:
-   - Copy `.env` file:
-     ```bash
-     cp .env.example .env
-     ```
-   - Configure your database credentials in the `.env` file.
-
-4. Database migration:
-   ```bash
-   php bin/console doctrine:database:create
-   php bin/console doctrine:migrations:migrate
-   ```
-
-5. Start the server:
-   ```bash
-   symfony serve
-   ```
-
-6. Access the application:
-   - User Interface: http://localhost:8000
-   - Admin Interface: http://localhost:8000/admin
 
 ## Technologies
 - PHP (Symfony Framework)
 - Twig Templating Engine
 - Doctrine ORM
+- JavaScript
 - Bootstrap
 - MySQL
+  
 
 
 
